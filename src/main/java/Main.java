@@ -4,6 +4,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.nio.file.Paths;
+import java.security.Key;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Main {
@@ -12,7 +14,13 @@ public class Main {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        JTable table = new JTable();
+
+
+        String[][] a = {{"a","a" ,"a", "a" ,"a", "a", "a"},
+                        {"a","a" ,"a", "a" ,"a", "a", "a"}};
+
+
+        ArrayList<String> b2 = new ArrayList<>();
 
         logger.info("Frame created");
 
@@ -25,16 +33,19 @@ public class Main {
             // print map entries
             for (Map.Entry<?, ?> entry : map.entrySet()) {
                 System.out.println(entry.getKey() + "=" + entry.getValue());
+                b2.add((String) entry.getKey());
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        frame.add(table);
+        JTable table = new JTable(a, b2.stream().toArray());
+
         frame.setTitle("Star Wars App");
-        frame.setSize(600, 600);
-        frame.setLayout(null);
+        frame.setBounds(20, 20, 600, 600);
+        frame.add(table);
+
         frame.setVisible(true);
     }
 
