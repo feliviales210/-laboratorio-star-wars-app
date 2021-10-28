@@ -1,3 +1,46 @@
 {
-
+  "Characters": {
+    "Harrison Ford": [
+      "13.07.1942",
+      185
+    ],
+    "Carrie Fisher": [
+      "21.10.1956",
+      155
+    ],
+    "Mark Hamill": [
+      "25.09.1951",
+      175
+    ],
+    "Peter Mayhew": [
+      "19.05.1944",
+      214
+    ],
+    "Kenny Baker": [
+      "24.08.1934",
+      112
+    ],
+    "David Prowse": [
+      "01.07.1935",
+      198
+    ],
+    "Natalie Portman": [
+      "09.06.1981",
+      160
+    ],
+    "Ewan McGregor": [
+      "31.03.1971",
+      177
+    ],
+    "Hayden Christensen": [
+      "19.04.1981",
+      182
+    ],
+    "Daisy Ridley": [
+      "10.04.1992",
+      170
+    ]
+  }
 }
+
+
