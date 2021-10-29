@@ -4,49 +4,42 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.nio.file.Paths;
-import java.security.Key;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashSet;
 
 public class Main {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
+    private static HashSet<Character> characters;
+
 
     public static void main(String[] args) {
+        logger.debug("Initializing program...");
         JFrame frame = new JFrame();
 
-
-        String[][] a = {{"a","a" ,"a", "a" ,"a", "a", "a"},
-                        {"a","a" ,"a", "a" ,"a", "a", "a"}};
-
+        String[] a = {"a","a" ,"a", "a" ,"a", "a", "a"};
 
         ArrayList<String> b2 = new ArrayList<>();
-
         logger.info("Frame created");
 
         try {
             ObjectMapper mapper = new ObjectMapper();
 
             // convert JSON file to map
-            Map<?, ?> map = mapper.readValue(Paths.get("src/main/resources/data.json").toFile(), Map.class);
-
-            // print map entries
-            for (Map.Entry<?, ?> entry : map.entrySet()) {
-                System.out.println(entry.getKey() + "=" + entry.getValue());
-                b2.add((String) entry.getKey());
-            }
+            Character character = mapper.readValue(Paths.get("src/main/resources/data.json").toFile(), Character.class);
+            characters.add(character);
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        JTable table = new JTable(a, b2.stream().toArray());
-
+        JTable table = new JTable((Object[][]) characters.toArray(), characters.toArray());
+        frame.add(table);
         frame.setTitle("Star Wars App");
         frame.setBounds(20, 20, 600, 600);
-        frame.add(table);
-
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
     }
 
 
